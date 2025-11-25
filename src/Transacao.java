@@ -1,39 +1,35 @@
-//Classe Transacao [Auxiliar]
+//Classe Transacao
+import java.time.LocalDateTime;
 
-
-//Importando
-import java.util.Date;
-
-
-//Criando a classe
 public class Transacao {
 
-    // Delcarando atributos
-    Date data = new Date();
-    String tipo;
-    double valor;
+    private String tipo; // Ex: "DEPOSITO", "SAQUE"
+    private double valor;
+    private LocalDateTime dataHora;
 
-//================ Construtor ===========================
-
-    //Construtor da Classe - Transacao
-    public Transacao(Date data, String tipo,double valor) {
-
-        this.data = data;
+    public Transacao(String tipo, double valor) {
         this.tipo = tipo;
         this.valor = valor;
+        this.dataHora = LocalDateTime.now(); // Pega a data e hora atual
+    }
 
-    } //Fim do canstrutor
+    // Métodos getters (getTipo, getValor, getDataHora)
+    public String getTipo() {
+        return tipo;
+    }
 
-//================= Get e Set ==========================
+    public double getValor() {
+        return valor;
+    }
 
-    //Getters
-    public Date getData() {return data;}
-    public String getTipo() {return tipo;}
-    public double getValor() {return valor;}
+    public LocalDateTime getDataHora() {
+        return dataHora;
+    }
 
-    //Setters
-    public void setData(Date data) {this.data = data;}
-    public void setTipo(String tipo) {this.tipo = tipo;}
-    public void setValor(double valor) {this.valor = valor;}
+    @Override
+    public String toString() {
+        return "Tipo: " + tipo + ", Valor: R$" + valor + ", Data/Hora: " + dataHora.toString();
+        }
+    }
 
-}
+
